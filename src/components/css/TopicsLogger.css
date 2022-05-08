@@ -1,0 +1,9 @@
+.topics-logger-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.topics-grid {
+    display: flex;
+    flex-direction: row;
+}

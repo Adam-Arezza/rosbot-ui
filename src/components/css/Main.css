@@ -1,0 +1,12 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.topics-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background-color: black;
+    color: lime;
+}

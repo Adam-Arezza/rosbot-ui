@@ -1,0 +1,28 @@
+.topics-list-container {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    background: darkblue;
+    min-height: calc(100vh - 30px);
+    overflow-y: auto;
+    color: white;
+    padding:0;
+    margin:0;
+    min-width: 225px;
+}
+
+.topic-item {
+    margin: 4px;
+}
+
+.sub-btn {
+    margin: 2px;
+}
+.sub-btn:hover {
+    cursor: pointer;
+    background: lightgrey;
+}
+
+li {
+    list-style: none;
+}

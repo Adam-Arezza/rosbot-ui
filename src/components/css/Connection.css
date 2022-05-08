@@ -1,0 +1,14 @@
+.connection-status {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    margin-left: auto;
+    color: white;
+}
+
+.connection-indicator {
+    padding: 10px;
+    border-radius: 50%;
+    width: 2.5px;
+    margin-left: 5px;
+}

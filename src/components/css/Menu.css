@@ -1,0 +1,13 @@
+.menu {
+    display: flex;
+    flex-direction: row;
+}
+.menu-item:hover {
+    cursor: pointer;
+    text-decoration: underline lime;
+}
+
+.menu-item {
+    color: white;
+    margin: 5px;
+}

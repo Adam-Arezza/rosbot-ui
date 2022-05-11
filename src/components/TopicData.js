@@ -10,17 +10,25 @@ const TopicData = (props) => {
     const { topic, topicType } = props
 
     const displayData = () => {
-        if (!topicData) {
-            return null
-        }
-        if (typeof topicData === "object") {
-            const data = topicData.map((d, i) => {
-                return <p key={i}>{d.toFixed(8)}</p>
+        // get the object keys
+        const dataKeys = Object.keys(topicData)
+        console.log(dataKeys)
+
+        // check if more than 1 key
+        if (dataKeys.length > 1) {
+            let dataAsString = JSON.stringify(topicData)
+            console.log(dataAsString)
+            const items = dataKeys.map((k,i) => {
+                return <p key={i}>{k}: {JSON.stringify(topicData[k]).replace("{","").replace("}","")}</p>
             })
-            return data
+            return items
         }
+
         else {
-            return <p>{topicData}</p>
+            const items = dataKeys.map((k, i) => {
+                return <p key={i}>{k}: {topicData[k]}</p>
+            })
+            return items
         }
 
     }
@@ -38,7 +46,8 @@ const TopicData = (props) => {
     useEffect(() => {
         if (rosTopic !== null) {
             rosTopic.subscribe((data) => {
-                setData(data.data)
+                // console.log(data)
+                setData(data)
             })
         }
     }, [rosTopic])
@@ -46,7 +55,7 @@ const TopicData = (props) => {
     return (
         <div className="topic-data-container">
             <h4>{props.topic}</h4>
-            {displayData()}
+            {topicData ? displayData() : null}
         </div>
     )
 }

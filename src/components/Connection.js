@@ -4,11 +4,17 @@ import './css/Connection.css'
 
 
 const Connection = () => {
-    const { status } = useContext(RosContext)
+    const {ros, status } = useContext(RosContext)
+
+    const connectToWebsocket = () => {
+        ros.connect('ws://localhost:9090')
+    }
 
     return (
         <div className="connection-status"
-        >Connection status: {status}
+        >
+            {status === "Not Connected"?<button onClick={() => connectToWebsocket()}>Connect</button>:null}
+            Connection status: {status}
             <div className="connection-indicator" style={status === "Connected" ? { background: "lime" } : { background: "grey" }}></div>
         </div>
     )

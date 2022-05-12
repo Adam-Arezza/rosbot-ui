@@ -13,13 +13,13 @@ const TopicPublisher = (props) => {
                 name: topic,
                 messageType: topicType
             })
+            publisher.advertise()
             publisher.publish(message)
         }
-        
     }, [ros, topic, topicType, message])
+    
     return (
         <React.Fragment>
-
         </React.Fragment>
     )
 }

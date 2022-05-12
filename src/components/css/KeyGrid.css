@@ -1,7 +1,7 @@
 .key-grid {
     display: grid;
-    grid-template-columns: 50px 50px 50px;
-    grid-template-rows: 30px 30px 30px;
+    grid-template-columns: 80px 80px 80px;
+    grid-template-rows: 60px 60px 60px;
 }
 
 .keyboard-key {
@@ -9,4 +9,5 @@
     color: lime;
     border:lime 1px solid;
     text-align: center;
+    font-size: 1.4rem;
 }

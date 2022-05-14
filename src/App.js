@@ -5,11 +5,11 @@ import Menu from './components/Menu';
 import { RosProvider } from './components/ROS';
 import Connection from './components/Connection';
 import TopicsLogger from './components/TopicsLogger';
-import RobotCommand from './components/RobotCommand';
+import Teleop from './components/Teleop';
 
 
 function App() {
-  const [section,setSection] = useState("")
+  const [section,setSection] = useState("Topics Logger")
 
   const selectSection = (menuSelect) => {
     setSection(menuSelect)
@@ -23,7 +23,7 @@ function App() {
       </div>
       <Main>
       {section === "Topics Logger" ?  <TopicsLogger></TopicsLogger>: null}
-      {section === "Robot Command" ?  <RobotCommand></RobotCommand>: null}
+      {section === "Teleop" ?  <Teleop></Teleop>: null}
       </Main>
     </RosProvider>
   );

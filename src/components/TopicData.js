@@ -12,23 +12,45 @@ const TopicData = (props) => {
     const displayData = () => {
         // get the object keys
         const dataKeys = Object.keys(topicData)
-        console.log(dataKeys)
+        // console.log(dataKeys)
 
         // check if more than 1 key
+
+        if (dataKeys.includes('data')) {
+            let dIndex = dataKeys.indexOf('data')
+            let label = dataKeys[dIndex]
+            if (typeof topicData[label] === "object") {
+                const items = topicData[label].map((d, i) => <p key={i}>{d.toFixed(4)}</p>)
+                return (
+                    <div>{label}: {items}</div>
+                )
+            }
+            else {
+                
+                return (
+                    <div>{label}: {topicData[label]}</div>
+                )
+            }
+            
+        }
         if (dataKeys.length > 1) {
-            let dataAsString = JSON.stringify(topicData)
-            console.log(dataAsString)
-            const items = dataKeys.map((k,i) => {
-                return <p key={i}>{k}: {JSON.stringify(topicData[k]).replace("{","").replace("}","")}</p>
+            // let dataAsString = JSON.stringify(topicData)
+            // console.log(dataAsString)
+            const items = dataKeys.map((k, i) => {
+                return <p key={i}>{k}: {JSON.stringify(topicData[k]).replace("{", "").replace("}", "")}</p>
             })
             return items
         }
 
         else {
-            const items = dataKeys.map((k, i) => {
-                return <p key={i}>{k}: {topicData[k]}</p>
-            })
-            return items
+            // const items = dataKeys.map((k, i) => {
+            //     return <p key={i}>{k}: {topicData[k]}</p>
+            // })
+            const label = dataKeys[0]
+            const items = topicData[label].map((d, i) => <p key={i}>{d.toFixed(4)}</p>)
+            return (
+                <div>{label}: {items}</div>
+            )
         }
 
     }

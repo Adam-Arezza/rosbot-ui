@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import './css/KeyGrid.css'
 
-const KeyGrid = (props) => {
+const TwistKeyGrid = (props) => {
     const [currentKey, setCurrentKey] = useState("")
     const keys = ["u", "i", "o", "j", "k", "l", "m", ",", "."]
     const { createTwistMessage } = props
@@ -19,7 +19,6 @@ const KeyGrid = (props) => {
     }, [createTwistMessage])
 
     const keyPress = useCallback((e) => {
-        console.log(e.key)
         setCurrentKey(e.key)
         switch (e.key) {
             case "u":
@@ -82,4 +81,4 @@ const KeyGrid = (props) => {
     )
 }
 
-export default KeyGrid
+export default TwistKeyGrid

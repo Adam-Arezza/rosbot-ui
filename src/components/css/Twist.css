@@ -2,3 +2,14 @@
     display: flex;
     flex-direction: column;
 }
+
+.twist-items-col {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+}
+
+.twist-value {
+    padding: 0;
+    margin:0;
+}

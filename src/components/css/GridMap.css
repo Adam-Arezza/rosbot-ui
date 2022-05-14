@@ -1,0 +1,14 @@
+.grid-map {
+    display: grid;
+    grid-template-columns: repeat(31,20px);
+    grid-template-rows: repeat(31,20px);
+    margin-top: 40px;
+}
+
+.grid-cell {
+    border: 1px solid black;
+}
+
+.robot {
+    background: blue;
+}

@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Message from "roslib/src/core/Message";
-import KeyGrid from "./KeyGrid";
+import KeyGrid from "./TwistKeyGrid";
 import TopicPublisher from "./TopicPublisher";
 import './css/Twist.css'
 
-const TwistCommand = (props) => {
+const TwistCommand = () => {
     const [twistMessage, setTwistMessage] = useState(null)
     const [linearVelocity, setLinearVelocity] = useState(0.2)
     const [angularVelocity, setAngularVelocity] = useState(0.5)
     const topic = "/cmd_vel"
     const topicType = "geometry_msgs/Twist"
-    const { teleop } = props
 
     const createTwistMessage = (linear, angular) => {
         const message = new Message({
@@ -28,10 +27,35 @@ const TwistCommand = (props) => {
         setTwistMessage(message)
     }
 
+    const displayTwistMessage = () => {
+        const linearVals = twistMessage.linear
+        const angularVals = twistMessage.angular
+        const linear = Object.keys(linearVals).map((linVal, i) => <p className="twist-value" key={i}>{linVal}: {twistMessage.linear[linVal]}</p>)
+        const angular = Object.keys(angularVals).map((angVal, i) => <p className="twist-value" key={i}>{angVal}: {twistMessage.angular[angVal]}</p>)
+        const display = <div style={{display:"flex", flexDirection:"row"}}>
+            <div className="twist-items-col">
+                <span>Linear</span>
+                {linear}
+            </div>
+            <div className="twist-items-col">
+                <span>Angular</span>
+                {angular}
+            </div>
+        </div>
+        return display
+    }
+
+    useEffect(() => {
+        if(!twistMessage) {
+            const linear = {x:0.0,y:0.0,z:0.0}
+            const angular = {x:0.0, y:0.0, z:0.0}
+            createTwistMessage(linear,angular)
+        }
+    })
     return (
         <div className="twist-command">
             {twistMessage ? <TopicPublisher topic={topic} message={twistMessage} topicType={topicType}></TopicPublisher> : null}
-            <h3>Teleop-Twist-Keyboard</h3>
+            <h3 style={{margin:5}}>Teleop-Twist-Keyboard</h3>
             <div className="linear-btns">
                 <button onClick={() => setLinearVelocity(linearVelocity + 0.05)}>Increase Linear</button>
                 <button onClick={() => setLinearVelocity(linearVelocity - 0.05)}>Decrease Linear</button>
@@ -40,10 +64,10 @@ const TwistCommand = (props) => {
                 <button onClick={() => setAngularVelocity(angularVelocity + 0.05)}>Increase Angular</button>
                 <button onClick={() => setAngularVelocity(angularVelocity - 0.05)}>Decrease Angular</button>
             </div>
-            {teleop ? <KeyGrid createTwistMessage={createTwistMessage}></KeyGrid> : null}
+            {twistMessage? displayTwistMessage():null}
+            <KeyGrid createTwistMessage={createTwistMessage}></KeyGrid>
         </div>
     )
-
 }
 
 export default TwistCommand

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import './css/Menu.css'
 
 const Menu = (props) => {
-    const [tab, setTab] = useState("")
-    const options = ["Topics Logger","Robot Command"]
+    const [tab, setTab] = useState("Topics Logger")
+    const options = ["Topics Logger","Teleop"]
 
     const tabSelection = (o) => {
         setTab(o)

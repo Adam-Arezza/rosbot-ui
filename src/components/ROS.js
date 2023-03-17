@@ -1,11 +1,18 @@
 import React, { createContext, useState } from "react";
-import ROSLIB from "roslib/src/RosLib";
+import ROSLIB, {TFClient} from "roslib/src/RosLib";
 
 export const RosContext = createContext()
 export const RosProvider = (props) => {
     const [status, setStatus] = useState("Not Connected")
     const ros = new ROSLIB.Ros({
-        url: 'ws://localhost:9090'
+        url: 'ws://192.168.1.76:9090'
+    })
+
+    const tfClient = new TFClient({
+        ros:ros,
+        angularThres : 0.01,
+        transThres : 0.01,
+        rate : 10.0
     })
     ros.on('connection', () => {
         setStatus("Connected")
@@ -22,7 +29,8 @@ export const RosProvider = (props) => {
         <RosContext.Provider
             value={{
                 ros: ros,
-                status: status
+                status: status,
+                tfClient: tfClient
             }}>
             {props.children}
         </RosContext.Provider>

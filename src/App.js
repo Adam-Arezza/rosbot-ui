@@ -6,6 +6,7 @@ import { RosProvider } from './components/ROS';
 import Connection from './components/Connection';
 import TopicsLogger from './components/TopicsLogger';
 import Teleop from './components/Teleop';
+import UrdfVisualizer from './components/UrdfVisualizer';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
       <Main>
       {section === "Topics Logger" ?  <TopicsLogger></TopicsLogger>: null}
       {section === "Teleop" ?  <Teleop></Teleop>: null}
+      {section === "Viewer" ? <UrdfVisualizer></UrdfVisualizer> : null}
       </Main>
     </RosProvider>
   );

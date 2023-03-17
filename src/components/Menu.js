@@ -3,7 +3,7 @@ import './css/Menu.css'
 
 const Menu = (props) => {
     const [tab, setTab] = useState("Topics Logger")
-    const options = ["Topics Logger","Teleop"]
+    const options = ["Topics Logger","Teleop", "Viewer"]
 
     const tabSelection = (o) => {
         setTab(o)

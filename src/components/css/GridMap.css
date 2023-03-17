@@ -1,14 +1,19 @@
 .grid-map {
     display: grid;
-    grid-template-columns: repeat(31,20px);
-    grid-template-rows: repeat(31,20px);
+    grid-template-columns: repeat(354,3px);
+    grid-template-rows: repeat(145,3px);
     margin-top: 40px;
-}
-
-.grid-cell {
     border: 1px solid black;
 }
 
-.robot {
-    background: blue;
+.black {
+    background-color: black;
+}
+
+.white {
+    background-color: white;
+}
+
+.grid-cell:hover{
+    background-color:red;
 }

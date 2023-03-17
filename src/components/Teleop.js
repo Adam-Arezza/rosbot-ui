@@ -7,11 +7,10 @@ import CameraView from "./CameraView";
 const Teleop = () => {
     return(
         <div className="robot-command-container">
-            <div>
             <TwistCommand></TwistCommand>
             <CameraView></CameraView>
-            </div>
             <GridMap></GridMap>
+            
         </div>
     )
 }
